@@ -1,10 +1,10 @@
 /// <reference path="../../js/jquery.d.ts" />
 
 import baseFooter = require("../coreplayer-shared-module/footerPanel");
-import baseApp = require("../coreplayer-shared-module/baseApp");
-import app = require("../../extensions/wellcomeplayer-seadragon-extension/app");
+import baseExtension = require("../coreplayer-shared-module/baseExtension");
 import utils = require("../../utils");
 import embed = require("../coreplayer-dialogues-module/embedDialogue");
+import IWellcomeExtension = require("../wellcomeplayer-shared-module/iWellcomeExtension");
 
 // adds save and download buttons
 // checks if embed is enabled
@@ -41,13 +41,23 @@ export class FooterPanel extends baseFooter.FooterPanel {
             $.publish(FooterPanel.SAVE);
         });
 
+        this.$embedButton.hide();
+
         // show embed button if no assets require authentication.
-        if (this.provider.pkg.extensions && !this.provider.pkg.extensions.isAllOpen) {
-            this.$embedButton.hide();
+        if (this.provider.pkg.extensions && this.provider.pkg.extensions.isAllOpen) {
+            this.$embedButton.show();
         }
 
-        if (!(<app.App>this.app).isSaveToLightboxEnabled()) {
-            this.$saveButton.hide();
+        this.$saveButton.hide();
+
+        if ((<IWellcomeExtension>this.extension).isSaveToLightboxEnabled()) {
+            this.$saveButton.show();
+        }
+
+        this.$downloadButton.hide();
+
+        if ((<IWellcomeExtension>this.extension).isDownloadEnabled()) {
+            this.$downloadButton.show();
         } 
     }
 
