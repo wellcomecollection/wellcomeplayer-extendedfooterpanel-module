@@ -21,12 +21,14 @@ export class FooterPanel extends baseFooter.FooterPanel {
     }
 
     create(): void {
+        this.setConfig('extendedFooterPanel');
+
         super.create();
 
-        this.$saveButton = $('<a class="imageButton save"></a>');
+        this.$saveButton = $('<a class="imageButton save"  title="' + this.content.save + '"></a>');
         this.$options.prepend(this.$saveButton);
 
-        this.$downloadButton = $('<a class="imageButton download"></a>');
+        this.$downloadButton = $('<a class="imageButton download" title="' + this.content.download + '"></a>');
         this.$options.prepend(this.$downloadButton);
 
         this.$downloadButton.on('click', (e) => {
