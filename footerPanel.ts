@@ -35,12 +35,22 @@ export class FooterPanel extends baseFooter.FooterPanel {
             e.preventDefault();
 
             $.publish(FooterPanel.DOWNLOAD);
+
+            (<IWellcomeExtension>this.extension).trackEvent('Interactions', 'Download', 'Opened', '');
         });
 
         this.$saveButton.on('click', (e) => {
             e.preventDefault();
 
             $.publish(FooterPanel.SAVE);
+
+            (<IWellcomeExtension>this.extension).trackEvent('Interactions', 'Add to Bookmarks', 'Opened', '');
+        });
+
+        this.$embedButton.on('click', (e) => {
+            e.preventDefault();
+
+            (<IWellcomeExtension>this.extension).trackEvent('Interactions', 'Embed', 'Opened', '');
         });
 
         this.$embedButton.hide();
