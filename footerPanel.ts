@@ -36,7 +36,7 @@ export class FooterPanel extends baseFooter.FooterPanel {
 
             $.publish(FooterPanel.DOWNLOAD);
 
-            (<IWellcomeExtension>this.extension).trackEvent('Interactions', 'Download', 'Opened', '');
+            (<IWellcomeExtension>this.extension).trackEvent('Player Interactions', 'Download', 'Opened', '');
         });
 
         this.$saveButton.on('click', (e) => {
@@ -44,13 +44,13 @@ export class FooterPanel extends baseFooter.FooterPanel {
 
             $.publish(FooterPanel.SAVE);
 
-            (<IWellcomeExtension>this.extension).trackEvent('Interactions', 'Add to Bookmarks', 'Opened', '');
+            (<IWellcomeExtension>this.extension).trackEvent('Player Interactions', 'Add to Bookmarks', 'Opened', '');
         });
 
         this.$embedButton.on('click', (e) => {
             e.preventDefault();
 
-            (<IWellcomeExtension>this.extension).trackEvent('Interactions', 'Embed', 'Opened', '');
+            (<IWellcomeExtension>this.extension).trackEvent('Player Interactions', 'Embed', 'Opened', '');
         });
 
         this.$embedButton.hide();
