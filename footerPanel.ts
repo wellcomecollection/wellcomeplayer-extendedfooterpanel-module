@@ -12,7 +12,7 @@ export class FooterPanel extends baseFooter.FooterPanel {
 
     $saveButton: JQuery;
     $downloadButton: JQuery;
-    
+
     static DOWNLOAD: string = 'footer.onDownload';
     static SAVE: string = 'footer.onSave';
 
@@ -50,7 +50,7 @@ export class FooterPanel extends baseFooter.FooterPanel {
         this.$embedButton.hide();
 
         // show embed button if no assets require authentication.
-        if (this.provider.pkg.extensions && this.provider.pkg.extensions.isAllOpen) {
+        if (this.provider.manifest.extensions && this.provider.manifest.extensions.isAllOpen) {
             this.$embedButton.show();
         }
 
@@ -64,7 +64,7 @@ export class FooterPanel extends baseFooter.FooterPanel {
 
         if ((<IWellcomeExtension>this.extension).isDownloadEnabled()) {
             this.$downloadButton.show();
-        } 
+        }
     }
 
     resize(): void {
