@@ -50,7 +50,7 @@ export class FooterPanel extends baseFooter.FooterPanel {
         this.$embedButton.hide();
 
         // show embed button if no assets require authentication.
-        if (this.provider.manifest.extensions && this.provider.manifest.extensions.isAllOpen) {
+        if (utils.Utils.getBool(this.options.embedEnabled, true) && this.provider.manifest.extensions && this.provider.manifest.extensions.isAllOpen) {
             this.$embedButton.show();
         }
 
