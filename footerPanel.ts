@@ -47,23 +47,23 @@ export class FooterPanel extends baseFooter.FooterPanel {
         //    e.preventDefault();
         //});
 
-        this.$embedButton.hide();
-
         // show embed button if no assets require authentication.
-        if (utils.Utils.getBool(this.options.embedEnabled, true) && this.provider.manifest.extensions && this.provider.manifest.extensions.isAllOpen) {
+        if ((<IWellcomeExtension>this.extension).isEmbedEnabled()) {
             this.$embedButton.show();
+        } else {
+            this.$embedButton.hide();
         }
-
-        this.$saveButton.hide();
 
         if ((<IWellcomeExtension>this.extension).isSaveToLightboxEnabled()) {
             this.$saveButton.show();
+        } else {
+            this.$saveButton.hide();
         }
-
-        this.$downloadButton.hide();
 
         if ((<IWellcomeExtension>this.extension).isDownloadEnabled()) {
             this.$downloadButton.show();
+        } else {
+            this.$downloadButton.hide();
         }
     }
 
